@@ -2,24 +2,20 @@
 
 print 'Enter a number > '
 input = gets.chomp
-number = input.to_i
 
-if number.to_s == input
-  # user typed in a number
+begin
+  number = Integer(input)
+
+  # raise 'Forced raise'
+
   if number.even?
     puts "#{number} is even"
   else
     puts "#{number} is odd"
   end
 
-else
-  # user typed in garbage
+rescue ArgumentError => e
   puts "\"#{input}\" is not a number"
+rescue RuntimeError => e
+  puts "Other error: #{e}"
 end
-
-# number = Integer(result)
-
-# equivalently:
-# number = gets.chomp.to_i
-
-# binding.pry
