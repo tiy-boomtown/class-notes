@@ -1,6 +1,7 @@
 # require 'pry'
 
 words_that_quit = ["quit", "q", "exit", "stop", "help"]
+base = 5
 
 loop do
   print 'Enter a number (or "quit" to exit) > '
@@ -22,10 +23,10 @@ loop do
     end
   end
 
-  if number.even?
-    puts "#{number} is even"
+  if number % base == 0
+    puts "#{number} is divisible by #{base}"
   else
-    puts "#{number} is odd"
+    puts "#{number} is not divisible by #{base}"
   end
 end
 
