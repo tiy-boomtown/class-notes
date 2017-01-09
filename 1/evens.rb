@@ -5,7 +5,12 @@ base = 5
 
 loop do
   print 'Enter a number (or "quit" to exit) > '
-  input = gets.chomp
+  begin
+    input = gets.chomp
+    # if user presses ^C, raises Interrupt
+  rescue Interrupt
+    input = "quit"
+  end
 
   if words_that_quit.include?(input.downcase)
     break
