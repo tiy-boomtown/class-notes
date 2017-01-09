@@ -1,13 +1,9 @@
 # require 'pry'
 
-loop do
-  print 'Enter a number (or "quit" to exit) > '
-  input = gets.chomp
+print 'Enter a number (or "quit" to exit) > '
+input = gets.chomp
 
-  if input == "quit"
-    break
-  end
-
+while input != "quit"
   begin
     number = Integer(input)
 
@@ -24,6 +20,9 @@ loop do
   rescue RuntimeError => e
     puts "Other error: #{e}"
   end
+
+  print 'Enter a number (or "quit" to exit) > '
+  input = gets.chomp
 end
 
 puts "We're done"
