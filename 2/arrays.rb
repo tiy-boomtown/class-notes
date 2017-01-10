@@ -16,10 +16,18 @@ end
 puts "Initial numbers"
 print_numbers numbers
 
-
 puts "Doubles"
 doubles = []
 numbers.each do |n|
   doubles.push n * 2
 end
 print_numbers doubles
+
+puts "Odds"
+odds = []
+numbers.each do |n|
+  if n.odd?
+    odds.push n
+  end
+end
+print_numbers odds
