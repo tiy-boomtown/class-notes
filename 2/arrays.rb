@@ -106,3 +106,21 @@ numbers.each do |n|
   end
 end
 puts hash
+
+puts "Are any numbers > 95?"
+result = false
+numbers.each do |n|
+  if n > 95
+    result = true
+  end
+end
+puts result
+
+puts "Are all numbers > 10?"
+result = true
+numbers.each do |n|
+  if n < 10
+    result = false
+  end
+end
+puts result
