@@ -1,16 +1,17 @@
-print 'Player 1, what is your name? > '
-p1 = gets.chomp
+def prompt(label)
+  print "#{label} > "
+  gets.chomp
+end
+
+p1 = prompt 'Player 1, what is your name?'
 score1 = 0
 
-print 'Player 2, what is your name? > '
-p2 = gets.chomp
+p2 = prompt 'Player 2, what is your name?'
 score2 = 0
 
 loop do
   # Player 1's turn
-  print "#{p1}, your score > "
-  input = gets.chomp
-
+  input = prompt "#{p1}, your score"
   if input == 'quit'
     break
   end
@@ -18,9 +19,7 @@ loop do
   score1 += Integer(input)
 
   # Player 2's turn
-  print "#{p2}, your score > "
-  input = gets.chomp
-
+  input = prompt "#{p2}, your score"
   if input == 'quit'
     break
   end
