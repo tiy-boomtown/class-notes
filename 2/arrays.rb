@@ -73,3 +73,36 @@ numbers.each do |n|
   end
 end
 puts sum
+
+# Count of numbers greater than 40
+puts "> 40"
+
+gt40s = []
+numbers.each do |n|
+  if n > 40
+    gt40s.push n
+  end
+end
+puts gt40s.length
+
+count = 0
+numbers.each do |n|
+  if n > 40
+    count += 1
+  end
+end
+puts count
+
+puts "Partition"
+hash = {
+    evens: [], # :evens => []
+    odds:  []  # :odds  => []
+}
+numbers.each do |n|
+  if n.even?
+    hash[:evens].push n
+  else
+    hash[:odds].push n
+  end
+end
+puts hash
