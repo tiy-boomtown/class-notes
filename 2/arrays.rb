@@ -1,3 +1,5 @@
+require 'faker'
+
 # `each`
 
 numbers = []
@@ -119,8 +121,46 @@ puts result
 puts "Are all numbers > 10?"
 result = true
 numbers.each do |n|
-  if n < 10
+  if n <= 10
     result = false
   end
 end
 puts result
+
+# ... array of hashes ...
+
+# Faker::Name.first_name
+# Faker::Name.last_name
+# Faker::Address.street_address
+
+database = []
+250.times do
+  # Option 1
+  new_person = {}
+  new_person[:first_name] = Faker::Name.first_name
+  new_person[:last_name]  = Faker::Name.last_name
+  new_person[:address]    = Faker::Address.street_address
+
+  # Option 2
+  new_person = {
+      first_name: Faker::Name.first_name,
+      last_name:  Faker::Name.last_name,
+      address:    Faker::Address.street_address
+  }
+
+  database.push new_person
+end
+
+# puts database.sample
+
+puts "How people have a last name starting with A?"
+
+count = 0
+database.each do |person|
+  # Note: `person` is a Hash
+  last_name = person[:last_name]
+  if last_name.start_with? "A"
+    count += 1
+  end
+end
+puts count
