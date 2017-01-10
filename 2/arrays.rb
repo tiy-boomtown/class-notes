@@ -50,3 +50,26 @@ numbers.each do |n|
   sum = n + sum
 end
 puts sum
+
+puts "Sum of even numbers"
+# Take 1
+evens = []
+numbers.each do |n|
+  if n.even?
+    evens.push n
+  end
+end
+sum = 0
+evens.each do |n|
+  sum = n + sum
+end
+puts sum
+
+# Take 2
+sum = 0
+numbers.each do |n|
+  if n.even?
+    sum += n
+  end
+end
+puts sum
