@@ -1,7 +1,9 @@
 class GuessingGame
-  def initialize
-    @answer = rand 1 .. 100
+  def initialize(max)
+    @max = max
+    @answer = rand 1 .. max
     @tries_left = 5
+    @won = false
   end
 
   def out_of_turns?
@@ -9,19 +11,19 @@ class GuessingGame
   end
 
   def got_answer?
-    @n == @answer
+    @won
   end
 
   def ask_for_number
-    print 'Guess a number (1 - 100) > '
-    @n = gets.chomp.to_i
+    print "Guess a number (1 - #{@max}) > "
+    gets.chomp.to_i
   end
 
-  def check_number
+  def check_number(guess)
     @tries_left -= 1
-    if @n == @answer
-      puts 'You win!'
-    elsif @n < @answer
+    if guess == @answer
+      @won = true
+    elsif guess < @answer
       puts 'Too low!'
     else
       puts 'Too high'
@@ -36,11 +38,14 @@ end
 
 # ---
 
-g = GuessingGame.new
+print 'Max number > '
+n = gets.chomp.to_i
+
+g = GuessingGame.new n
 
 until g.out_of_turns? || g.got_answer?
-  g.ask_for_number
-  g.check_number
+  guess = g.ask_for_number
+  g.check_number(guess)
 end
 
 if g.got_answer?
