@@ -25,8 +25,10 @@ class GuessingGame
       @won = true
     elsif guess < @answer
       puts 'Too low!'
+      :low
     else
       puts 'Too high!'
+      :high
     end
   end
 
@@ -51,6 +53,28 @@ class BadAI
   end
 end
 
+class SmartAI
+  def initialize game
+    @min = 1
+    @max = game.max
+  end
+
+  def ask_for_number(game)
+    @last_guess = (@min + @max) / 2
+    puts "Guessing '#{@last_guess}'"
+    @last_guess
+  end
+
+  def record_result(result)
+    # result is either :low, :high, or true
+    if result == :low
+      @min = @last_guess
+    elsif result == :high
+      @max = @last_guess
+    end
+  end
+end
+
 # ---
 
 # print 'Max number > '
@@ -58,12 +82,12 @@ end
 n = 100
 
 g = GuessingGame.new n
-# p = Player.new
-p = BadAI.new
+p = SmartAI.new g # Player.new, BadAI.new
 
 until g.out_of_turns? || g.got_answer?
   guess = p.ask_for_number g
-  g.check_number(guess)
+  result = g.check_number guess
+  p.record_result result
 end
 
 if g.got_answer?
