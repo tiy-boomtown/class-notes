@@ -6,17 +6,17 @@ class GuessingGame
     @won = false
   end
 
+  # def max
+  #   @max
+  # end
+  attr_reader :max
+
   def out_of_turns?
     @tries_left == 0
   end
 
   def got_answer?
     @won
-  end
-
-  def ask_for_number
-    print "Guess a number (1 - #{@max}) > "
-    gets.chomp.to_i
   end
 
   def check_number(guess)
@@ -36,15 +36,24 @@ class GuessingGame
   end
 end
 
+class Player
+  def ask_for_number(game)
+    print "Guess a number (1 - #{game.max}) > "
+    gets.chomp.to_i
+  end
+end
+
 # ---
 
-print 'Max number > '
-n = gets.chomp.to_i
+# print 'Max number > '
+# n = gets.chomp.to_i
+n = 100
 
 g = GuessingGame.new n
+p = Player.new
 
 until g.out_of_turns? || g.got_answer?
-  guess = g.ask_for_number
+  guess = p.ask_for_number g
   g.check_number(guess)
 end
 
