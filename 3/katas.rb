@@ -56,3 +56,12 @@ people = [
   }
 ]
 
+# Populate an array of names from the people above
+# names = people.map { |p| p[:name] }
+
+names = []
+people.each do |p|
+  names.push p[:name]
+end
+
+puts names.join " + "
