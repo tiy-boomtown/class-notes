@@ -9,6 +9,7 @@ class GuessingGame
   end
 
   def got_answer?
+    @n == @answer
   end
 
   def ask_for_number
