@@ -10,19 +10,21 @@ def letter_count(str, letter)
 end
 
 def letter_frequencies(str)
-  # {
-  #     a: letter_count(str, 'a'),
-  #     b: letter_count(str, 'b'),
-  #     c: letter_count(str, 'c')
-  # }
+  # TOO MUCH WORK!
+  # result = {}
+  # ('a' .. 'z').each do |letter|
+  #   result[ letter ] = letter_count(str, letter)
+  # end
+  # result
 
-  result = {}
-  # result['a'] = letter_count(str, 'a')
-  # result['b'] = letter_count(str, 'b')
-  ('a' .. 'z').each do |letter|
-    result[ letter ] = letter_count(str, letter)
+  counts = {}
+  str.split('').each do |letter|
+    if counts[letter] == nil # letter is not in the hash
+      counts[letter] = 0
+    end
+    counts[letter] += 1
   end
-  result
+  counts
 end
 
 # ----
@@ -35,5 +37,5 @@ puts "#{n} e's"
 puts "#{letter_count(str, 'a')} a's"
 
 freq = letter_frequencies(str)
-
+puts "freq=#{freq}"
 puts "There are #{freq['e']} many e's"
