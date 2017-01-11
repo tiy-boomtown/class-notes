@@ -27,6 +27,11 @@ class GuessingGame
       puts 'Too high'
     end
   end
+
+  # attr_reader :answer
+  def answer
+    @answer
+  end
 end
 
 # ---
@@ -41,7 +46,7 @@ end
 if g.got_answer?
   puts 'You won!'
 else
-  puts 'You lost!'
+  puts "You lost! The answer was #{g.answer}"
 end
 
 # win or lose?
