@@ -26,7 +26,7 @@ class GuessingGame
     elsif guess < @answer
       puts 'Too low!'
     else
-      puts 'Too high'
+      puts 'Too high!'
     end
   end
 
@@ -43,6 +43,14 @@ class Player
   end
 end
 
+class BadAI
+  def ask_for_number(game)
+    guess = rand 1 .. game.max
+    puts "Guessing '#{guess}'"
+    guess
+  end
+end
+
 # ---
 
 # print 'Max number > '
@@ -50,7 +58,8 @@ end
 n = 100
 
 g = GuessingGame.new n
-p = Player.new
+# p = Player.new
+p = BadAI.new
 
 until g.out_of_turns? || g.got_answer?
   guess = p.ask_for_number g
