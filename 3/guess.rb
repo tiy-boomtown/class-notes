@@ -39,22 +39,34 @@ class GuessingGame
 end
 
 class Player
+  def initialize(_)
+  end
+
   def ask_for_number(game)
     print "Guess a number (1 - #{game.max}) > "
     gets.chomp.to_i
   end
+
+  def record_result(_)
+  end
 end
 
 class BadAI
+  def initialize(_)
+  end
+
   def ask_for_number(game)
     guess = rand 1 .. game.max
     puts "Guessing '#{guess}'"
     guess
   end
+
+  def record_result(_)
+  end
 end
 
 class SmartAI
-  def initialize game
+  def initialize(game)
     @min = 1
     @max = game.max
   end
@@ -82,7 +94,7 @@ end
 n = 100
 
 g = GuessingGame.new n
-p = SmartAI.new g # Player.new, BadAI.new
+p = SmartAI.new g # BadAI.new
 
 until g.out_of_turns? || g.got_answer?
   guess = p.ask_for_number g
