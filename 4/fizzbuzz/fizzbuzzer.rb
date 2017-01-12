@@ -18,17 +18,19 @@ class Fizzbuzzer
   end
 
   def apply_one(n)
-    # if n % @base == 0
-    #   @replacement
-    # else
-    #   n
-    # end
     @rules.each do |base,replacement|
       if n % base == 0
         return replacement
-      else
-        return n
       end
+    end
+
+    n # return n
+  end
+
+  def run(range_max)
+    (1 .. range_max).to_a.map do |x|
+      # self.apply_one x
+      apply_one x
     end
   end
 end

@@ -15,6 +15,7 @@ describe Fizzbuzzer do
     result = [
         1,
         2,
+        3,
         'Cat',
         'Dog',
         6,
@@ -80,4 +81,13 @@ describe Fizzbuzzer do
   end
 
   it 'can apply multiple rules'
+
+  it 'can apply the second rule' do
+    f = Fizzbuzzer.new
+
+    f.register_rule(4, 'Cat')
+    f.register_rule(5, 'Dog')
+
+    expect(f.apply_one 5).to eq 'Dog'
+  end
 end
