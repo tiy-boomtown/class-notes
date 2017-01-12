@@ -1,8 +1,8 @@
 require 'rspec'
 
 class Counter
-  def initialize
-    @n = 0
+  def initialize(start=0)
+    @n = start
   end
 
   def up
@@ -25,5 +25,13 @@ describe Counter do
 
     # Expectation / Then
     expect(c.count).to eq 2
+  end
+
+  it 'can start with non-zero value' do
+    c = Counter.new 5
+
+    c.up
+
+    expect(c.count).to eq 6
   end
 end
