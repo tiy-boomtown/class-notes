@@ -67,5 +67,17 @@ describe Fizzbuzzer do
     expect(result).to eq 5
   end
 
-  it 'can register multiple numbers'
+  it 'can register multiple numbers' do
+    # Given a FB
+    f = Fizzbuzzer.new
+
+    # When I register multiple numbers
+    f.register_rule(2, 'A')
+    f.register_rule(3, 'B')
+
+    expect(f.rule_for 2).to eq 'A'
+    expect(f.rule_for 3).to eq 'B'
+  end
+
+  it 'can apply multiple rules'
 end
