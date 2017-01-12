@@ -22,8 +22,15 @@ puts x_words.count
 # 2. Class practice
 
 class Person
-  # Fill this out!
+  def initialize(first_name, last_name)
+    @first_name = first_name
+    @last_name = last_name
+  end
+
+  def greet
+    "Hi, my name is #{@first_name} #{@last_name}"
+  end
 end
 
-p = Person.new 'Your', 'Name'
+p = Person.new('Your', 'Name')
 puts p.greet # => 'Hi, my name is Your Name'
