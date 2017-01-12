@@ -1,5 +1,19 @@
 require 'rspec'
 
+class Counter
+  def initialize
+    @n = 0
+  end
+
+  def up
+    @n += 1
+  end
+
+  def count
+    @n
+  end
+end
+
 describe Counter do
   it 'increments' do
     # Setup / Given
@@ -10,6 +24,6 @@ describe Counter do
     c.up
 
     # Expectation / Then
-    expect(c.count).to == 2
+    expect(c.count).to eq 2
   end
 end
