@@ -5,7 +5,7 @@ class Fizzbuzzer
   end
 
   def apply_one(n)
-    if n == @base
+    if n % @base == 0
       @replacement
     end
   end

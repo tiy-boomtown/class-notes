@@ -38,7 +38,7 @@ describe Fizzbuzzer do
     expect(f.run 22).to eq result
   end
 
-  it 'can register and replace one number' do
+  it 'replaces exact matches' do
     f = Fizzbuzzer.new
     f.register_rule(3, 'Fizz')
 
@@ -46,6 +46,15 @@ describe Fizzbuzzer do
     result = f.apply_one 3
 
     # check result
+    expect(result).to eq 'Fizz'
+  end
+
+  it 'replaces multiples' do
+    f = Fizzbuzzer.new
+    f.register_rule(3, 'Fizz')
+
+    result = f.apply_one 6
+
     expect(result).to eq 'Fizz'
   end
 end
