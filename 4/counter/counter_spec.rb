@@ -12,6 +12,10 @@ class Counter
   def count
     @n
   end
+
+  def reset
+    @n = 0
+  end
 end
 
 describe Counter do
@@ -33,5 +37,13 @@ describe Counter do
     c.up
 
     expect(c.count).to eq 6
+  end
+
+  it 'can reset' do
+    c = Counter.new 5
+
+    c.reset
+
+    expect(c.count).to be_zero
   end
 end
