@@ -57,4 +57,15 @@ describe Fizzbuzzer do
 
     expect(result).to eq 'Fizz'
   end
+
+  it "doesn't replace non-multiples" do
+    f = Fizzbuzzer.new
+    f.register_rule(3, 'Fizz')
+
+    result = f.apply_one 5
+
+    expect(result).to eq 5
+  end
+
+  it 'can register multiple numbers'
 end
