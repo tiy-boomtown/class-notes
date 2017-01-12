@@ -6,7 +6,7 @@ describe Fizzbuzzer do
     expect(1 + 1).to eq 2
   end
 
-  skip 'really works' do
+  it 'really works' do
     f = Fizzbuzzer.new
 
     f.register_rule(4, 'Cat')
@@ -80,7 +80,14 @@ describe Fizzbuzzer do
     expect(f.rule_for 3).to eq 'B'
   end
 
-  it 'can apply multiple rules'
+  it 'can apply multiple rules' do
+    f = Fizzbuzzer.new
+
+    f.register_rule(4, 'Cat')
+    f.register_rule(5, 'Dog')
+
+    expect(f.apply_one 20).to eq 'CatDog'
+  end
 
   it 'can apply the second rule' do
     f = Fizzbuzzer.new
