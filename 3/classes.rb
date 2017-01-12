@@ -27,6 +27,11 @@ class Counter
   end
 end
 
+c = Counter.new
+c.up
+c.up
+puts c.count # => 2
+
 c = Counter.new 5
 d = Counter.new 10
 
