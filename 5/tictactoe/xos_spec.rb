@@ -22,7 +22,13 @@ describe XOs do
     expect(x.letter_at 7).to eq nil
   end
 
-  it 'rejects out-of-bounds moves'
+  it 'rejects out-of-bounds moves' do
+    x = XOs.new
+
+    expect do
+      x.take_turn('X', 20)
+    end.to raise_error(RuntimeError)
+  end
 
   it 'rejects squares that are already taken' do
     x = XOs.new
