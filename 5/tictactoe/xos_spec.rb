@@ -16,6 +16,15 @@ describe XOs do
     expect(x.letter_at 3).to eq 'X'
   end
 
+  it 'can see an empty square' do
+    x = XOs.new
+
+    expect(x.letter_at 7).to eq nil
+  end
+
+  it 'rejects out-of-bounds moves'
+  it 'rejects squares that are already taken'
+
   skip 'can fill up the board' do
     x = XOs.new
 
