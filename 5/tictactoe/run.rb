@@ -9,7 +9,7 @@ current_player = x
 until g.winner || g.board_full?
   puts g.show_board
   pos = current_player.prompt_for_move
-  g.take_turn p.letter, pos
+  g.take_turn current_player.letter, pos
 
   # Toggle current player to the other person
   if current_player == x
