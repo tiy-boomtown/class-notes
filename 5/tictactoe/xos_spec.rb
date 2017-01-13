@@ -41,6 +41,8 @@ describe XOs do
   it 'finds three in a row' do
     x = XOs.new
 
+    expect(x.winner).to eq nil
+
     x.take_turn 'X', 5
     x.take_turn 'X', 4
     x.take_turn 'X', 6
