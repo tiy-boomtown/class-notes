@@ -48,5 +48,13 @@ describe XOs do
     expect(x.winner).to eq 'X'
   end
 
-  it 'finds three in a column'
+  it 'finds three in a column' do
+    x = XOs.new
+
+    x.take_turn 'O', 1
+    x.take_turn 'O', 4
+    x.take_turn 'O', 7
+
+    expect(x.winner).to eq 'O'
+  end
 end
