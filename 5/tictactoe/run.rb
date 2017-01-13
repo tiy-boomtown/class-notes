@@ -9,13 +9,19 @@ current_player = x
 until g.winner || g.board_full?
   puts g.show_board
   pos = current_player.prompt_for_move
-  g.take_turn current_player.letter, pos
 
-  # Toggle current player to the other person
-  if current_player == x
-    current_player = o
-  else
-    current_player = x
+  begin
+    g.take_turn current_player.letter, pos
+
+    # Move was valid; it's the next persons' turn
+    if current_player == x
+      current_player = o
+    else
+      current_player = x
+    end
+  rescue => e
+    # Move was invalid
+    puts "Invalid move! #{e}"
   end
 end
 
