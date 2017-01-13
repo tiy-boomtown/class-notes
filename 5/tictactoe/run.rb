@@ -5,14 +5,18 @@ g = XOs.new
 x = Player.new 'X'
 o = Player.new 'O'
 
+current_player = x
 until g.winner || g.board_full?
   puts g.show_board
-  pos = x.prompt_for_move
-  g.take_turn 'X', pos
+  pos = current_player.prompt_for_move
+  g.take_turn p.letter, pos
 
-  puts g.show_board
-  pos = o.prompt_for_move
-  g.take_turn 'O', pos
+  # Toggle current player to the other person
+  if current_player == x
+    current_player = o
+  else
+    current_player = x
+  end
 end
 
 if g.winner
