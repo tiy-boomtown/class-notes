@@ -1,3 +1,6 @@
+require_relative 'player'
+require_relative 'xos'
+
 g = XOs.new
 x = Player.new
 o = Player.new
