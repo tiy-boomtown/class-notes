@@ -23,7 +23,15 @@ describe XOs do
   end
 
   it 'rejects out-of-bounds moves'
-  it 'rejects squares that are already taken'
+
+  it 'rejects squares that are already taken' do
+    x = XOs.new
+    x.take_turn('X', 4)
+
+    expect do
+      x.take_turn('O', 4)
+    end.to raise_error(RuntimeError)
+  end
 
   it 'can fill up the board' do
     x = XOs.new

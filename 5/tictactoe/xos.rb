@@ -42,6 +42,9 @@ class XOs
 
   def take_turn(letter, position)
     @turns_left -= 1
+    if letter_at(position) # is not nil
+      raise "#{position} is already taken!"
+    end
     @board[position - 1] = letter
   end
 
