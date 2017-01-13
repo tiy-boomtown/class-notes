@@ -50,11 +50,16 @@ class XOs
   end
 
   def show_board
-    "
-    #{letter_at 1} | #{letter_at 2} | #{letter_at 3}
-    ---------
-    #{letter_at 4} | #{letter_at 5} | #{letter_at 6}
-    ---------
-    #{letter_at 7} | #{letter_at 8} | #{letter_at 9}"
+    [
+        show_row([1,2,3]),
+        '---------',
+        show_row([4,5,6]),
+        '---------',
+        show_row([7,8,9])
+    ].join "\n"
+  end
+
+  def show_row(row)
+    row.map { |pos| letter_at(pos) || pos }.join(' | ')
   end
 end
