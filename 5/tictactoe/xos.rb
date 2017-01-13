@@ -3,14 +3,19 @@ class XOs
 
   def initialize
     @turns_left = 9
-    @board = []
+    @board = Array.new 9
   end
 
   def winner
   end
 
   def board_full?
-    @turns_left == 0
+    # if @board.include?(nil)
+    #   false
+    # else
+    #   true
+    # end
+    !@board.include?(nil)
   end
 
   def take_turn(letter, position)
