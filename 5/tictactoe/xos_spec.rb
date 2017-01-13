@@ -37,4 +37,16 @@ describe XOs do
 
     expect(x.board_full?).to eq true
   end
+
+  it 'finds three in a row' do
+    x = XOs.new
+
+    x.take_turn 'X', 5
+    x.take_turn 'X', 4
+    x.take_turn 'X', 6
+
+    expect(x.winner).to eq 'X'
+  end
+
+  it 'finds three in a column'
 end
