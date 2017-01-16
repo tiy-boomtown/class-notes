@@ -14,11 +14,22 @@ class Hangman
     # @word = Dictionary[position]
     # @word = Dictionary.sample
 
+    good_words = []
+    File.foreach('/usr/share/dict/words') do |line|
+      word = line.chomp
+      if 4 <= word.length && word.length <= 9 && word.downcase == word
+        good_words.push word
+      end
+    end
+    puts "Ended up with #{good_words.count} good words from readlines"
+
     contents   = File.read '/usr/share/dict/words'
     words      = contents.split
+    puts "There are #{words.count} total words"
     good_words = words.select do |w|
       4 <= w.length && w.length <= 9 && w.downcase == w
     end
+    puts "There are #{good_words.count} good words"
 
     @word  = good_words.sample
     @turns = 7
