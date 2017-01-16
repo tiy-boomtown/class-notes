@@ -19,7 +19,7 @@ describe Cart do
     c.add_item Item.new('Coffee', 4)
     c.add_item Item.new('Coffee', 4)
 
-    expect(c.total_price).to eq 4
+    expect(c.total_price).to eq 8
   end
 end
 
