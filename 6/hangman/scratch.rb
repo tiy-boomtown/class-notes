@@ -5,17 +5,27 @@ Dictionary = [
 ]
 
 class Hangman
+  attr_reader :word
+
   def initialize
     @guesses = []
 
     # position = rand 0 .. (Dictionary.length - 1)
     # @word = Dictionary[position]
-    @word = Dictionary.sample
+    # @word = Dictionary.sample
+
+    contents   = File.read '/usr/share/dict/words'
+    words      = contents.split
+    good_words = words.select do |w|
+      4 <= w.length && w.length <= 9 && w.downcase == w
+    end
+
+    @word  = good_words.sample
     @turns = 7
   end
 
   def ask_for_user_input
-    puts "The answer is #{@word}"
+    # puts "The answer is #{@word}"
     print '> '
     letter = gets.chomp
     if @word.include? letter
@@ -71,7 +81,9 @@ end
 
 g = Hangman.new
 until g.out_of_turns? || g.found_answer? do
-  g.ask_for_user_input
   puts g.show_board
+  g.ask_for_user_input
   g.show_guesses
 end
+
+puts "The answer was: #{g.word}"
