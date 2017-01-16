@@ -32,10 +32,19 @@ class Hangman
     puts @guesses.join(',')
     puts "You have #{@turns} turns left"
   end
+
+  def out_of_turns?
+    # if @turns == 0
+    #   true
+    # else
+    #   false
+    # end
+    @turns == 0
+  end
 end
 
 g = Hangman.new
-loop do
+until g.out_of_turns? do
   g.ask_for_user_input
   g.show_guesses
 end
