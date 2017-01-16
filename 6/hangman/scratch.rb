@@ -28,6 +28,17 @@ class Hangman
     @guesses.push letter
   end
 
+  def show_board
+    @word.chars.each do |char|
+      if @guesses.include? char
+        print char
+      else
+        print '_'
+      end
+    end
+    puts ''
+  end
+
   def show_guesses
     puts @guesses.join(',')
     puts "You have #{@turns} turns left"
@@ -46,5 +57,6 @@ end
 g = Hangman.new
 until g.out_of_turns? do
   g.ask_for_user_input
+  g.show_board
   g.show_guesses
 end
