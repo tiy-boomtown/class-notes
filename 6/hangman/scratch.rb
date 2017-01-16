@@ -56,10 +56,21 @@ class Hangman
     # end
     @turns == 0
   end
+
+  def found_answer?
+    # 1. the board includes no underscores
+    !show_board.include?('_')
+
+    # 2. every letter in the answer (@word) has been guessed
+    # (@words.chars - @guesses).count == 0
+    @word.chars.all? do |letter|
+      @guesses.include? letter
+    end
+  end
 end
 
 g = Hangman.new
-until g.out_of_turns? do
+until g.out_of_turns? || g.found_answer? do
   g.ask_for_user_input
   puts g.show_board
   g.show_guesses
