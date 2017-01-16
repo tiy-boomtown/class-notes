@@ -10,6 +10,21 @@ class Item
   end
 end
 
+class Cart
+  def initialize
+    @total_price = 0
+  end
+
+  def add_item(item)
+    @total_price = @total_price + item.price
+  end
+
+  attr_reader :total_price
+  # def total_price
+  #   @total_price
+  # end
+end
+
 describe Cart do
   it 'can hold items' do
     c = Cart.new
