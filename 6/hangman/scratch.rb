@@ -17,6 +17,11 @@ class Hangman
     puts "The answer is #{@word}"
     print '> '
     letter = gets.chomp
+    if @word.include? letter
+      puts 'Correct!'
+    else
+      puts 'No!'
+    end
     @guesses.push letter
   end
 
