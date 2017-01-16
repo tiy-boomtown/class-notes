@@ -86,9 +86,9 @@ CSV.open "orders.csv", "w" do |csv|
   csv << [
     "Id",
     "Customer Name",
-    "Address",
     "Item",
     "Price",
+    "Address",
     "Quantity",
     "Placed At"
   ]
