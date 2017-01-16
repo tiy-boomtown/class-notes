@@ -28,15 +28,19 @@ class Hangman
     @guesses.push letter
   end
 
+  # ____
+  # _ | _ | _ | _
+  # _ | a | _ | _
   def show_board
+    array = []
     @word.chars.each do |char|
       if @guesses.include? char
-        print char
+        array.push char
       else
-        print '_'
+        array.push '_'
       end
     end
-    puts ''
+    array.join(' ')
   end
 
   def show_guesses
@@ -57,6 +61,6 @@ end
 g = Hangman.new
 until g.out_of_turns? do
   g.ask_for_user_input
-  g.show_board
+  puts g.show_board
   g.show_guesses
 end
