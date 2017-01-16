@@ -12,17 +12,22 @@ end
 
 class Cart
   def initialize
-    @total_price = 0
+    @list = []
   end
 
   def add_item(item)
-    @total_price = @total_price + item.price
+    # item.name
+    # item.price
+    @list.push item
   end
 
-  attr_reader :total_price
-  # def total_price
-  #   @total_price
-  # end
+  def total_price
+    total = 0
+    @list.each do |i|
+      total += i.price
+    end
+    total
+  end
 end
 
 describe Cart do
