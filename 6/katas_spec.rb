@@ -1,7 +1,26 @@
 require 'rspec'
 
 class Item
-  # Write your code here!
+  attr_reader :name, :price
+
+  def initialize(name, price)
+    # @name, @price = name, price
+    @name = name
+    @price = price
+  end
+end
+
+describe Cart do
+  it 'can hold items' do
+    c = Cart.new
+
+    expect(c.total_price).to eq 0
+
+    c.add_item Item.new('Coffee', 4)
+    c.add_item Item.new('Coffee', 4)
+
+    expect(c.total_price).to eq 4
+  end
 end
 
 describe Item do
