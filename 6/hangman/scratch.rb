@@ -11,6 +11,7 @@ class Hangman
     # position = rand 0 .. (Dictionary.length - 1)
     # @word = Dictionary[position]
     @word = Dictionary.sample
+    @turns = 7
   end
 
   def ask_for_user_input
@@ -21,12 +22,15 @@ class Hangman
       puts 'Correct!'
     else
       puts 'No!'
+      # Player loses a turn
+      @turns -= 1
     end
     @guesses.push letter
   end
 
   def show_guesses
     puts @guesses.join(',')
+    puts "You have #{@turns} turns left"
   end
 end
 
