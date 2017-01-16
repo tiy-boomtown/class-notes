@@ -29,7 +29,23 @@ puts "Result was #{result}"
 f.close
 
 # Use this instead of ^
+puts 'Reading with block syntax'
+i = 1
 File.open(path('example2'), 'r') do |f|
-  result = f.gets
-  puts "Result was #{result}"
+  # result = f.gets
+  # puts "Result was #{result}"
+  loop do
+    line = f.gets
+    if line == nil
+      break
+    end
+    puts "#{i}. #{line}"
+    i += 1
+  end
+end
+
+i = 1
+File.foreach(path('example2')) do |line|
+  puts "#{i}. #{line}"
+  i += 1
 end
