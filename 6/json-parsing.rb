@@ -1,10 +1,12 @@
 require 'pry'
 require 'json'
+require 'httparty'
 
 contents = File.read '/Users/james/Code/class-notes/6/rails.json'
 parsed   = JSON.parse contents
+# parsed = HTTParty.get 'https://api.github.com/repos/rails/rails'
 
-puts "#{contents.class} | #{parsed.class}"
+# puts "#{contents.class} | #{parsed.class}"
 
 stars = parsed['stargazers_count']
 puts "There are #{stars} stars"
