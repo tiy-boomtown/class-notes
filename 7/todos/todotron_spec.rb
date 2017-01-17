@@ -27,4 +27,14 @@ describe TodoTron do
     item = tron.items.first
     expect(item.done?).to eq true
   end
+
+  it 'can find items' do
+    tron = TodoTron.new
+    tron.add_item 'Fix the thing'
+
+    i = tron.find_item 'Fix the thing'
+
+    # expect(tron.items).to include i
+    expect(i.class).to eq Todo
+  end
 end
