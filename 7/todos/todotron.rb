@@ -40,4 +40,19 @@ class TodoTron
       end
     end
   end
+
+  def self.load_csv(path)
+    tron = TodoTron.new
+
+    # Load in items
+    CSV.foreach(path, headers: true) do |row|
+      tron.add_item row['Item Name']
+
+      if row['Done'] == 'true'
+        tron.mark_complete row['Item Name']
+      end
+    end
+
+    tron
+  end
 end
