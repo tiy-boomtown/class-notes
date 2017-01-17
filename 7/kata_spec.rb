@@ -10,6 +10,21 @@ end
 
 class Band
   # Write your code here!
+  attr_reader :name
+
+  def initialize name
+    @name = name
+    @members = []
+  end
+
+  # attr_reader :members
+  def members
+    @members
+  end
+
+  def add_member(bandmate)
+    @members.push bandmate
+  end
 end
 
 describe Band do
