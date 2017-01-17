@@ -14,7 +14,9 @@ class TodoTron
 
   def mark_complete(description)
     item = find_item description
-    item.done!
+    if item
+      item.done!
+    end
   end
 
   def find_item(description)
@@ -23,5 +25,6 @@ class TodoTron
         return item
       end
     end
+    return nil
   end
 end

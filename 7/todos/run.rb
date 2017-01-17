@@ -13,10 +13,10 @@ loop do
   input = gets.chomp
 
   if input == '1'
-    m.items.each do |item|
-      puts "* #{item.description}"
-    end
-    # puts m.items
+    # m.items.each do |item|
+    #   puts "* #{item.description}"
+    # end
+    puts m.items
 
   elsif input == '2'
     print 'New item > '
@@ -24,7 +24,9 @@ loop do
     m.add_item description
 
   elsif input == '3'
-    m.mark_complete
+    print 'Which item > '
+    description = gets.chomp
+    m.mark_complete description
 
   else
     puts "Unrecognized input: #{input}. Try again"
