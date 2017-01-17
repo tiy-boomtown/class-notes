@@ -1,62 +1,23 @@
 require 'csv'
 
-# CSV.foreach '/Users/james/Code/class-notes/6/planet_express_logs.csv', headers: true do |row|
-# end
+def pilot_for_planet(planet)
 
-numbers = []
-1000.times do
-  numbers.push rand(1 .. 10)
 end
 
-# Question: how many times does each number show up?
-# 1 => 50
-# 2 => 75
-# ...
-counts = {}
-numbers.each do |x|
-  old_count_for_x = counts[x]
-  if old_count_for_x == nil
-    old_count_for_x = 0
-  end
+# 4. Revenue per planet
+revenues_per_planet = Hash.new(0)
+revenues_per_pilot = Hash.new(0)
+# { Earth => 100, Moon => 200, ... }
+CSV.foreach '/Users/james/Code/class-notes/6/planet_express_logs.csv', headers: true do |row|
+  # have `row`
+  revenue_for_order = row['Money'].to_i * row['Crates'].to_i
+  planet = row['Destination']
 
-  new_count_for_x = old_count_for_x + 1
-  counts[x] = new_count_for_x
+  # revenues_per_planet[planet] ||= 0
+  revenues_per_planet[planet] += revenue_for_order
+
+  pilot = pilot_for_planet(planet)
+  revenues_per_pilot[pilot] += revenue_for_order
 end
-puts counts
 
-# 2.
-counts = {}
-numbers.each do |x|
-  if counts[x] == nil
-    counts[x] = 0
-  end
-  # ^ guard clause
-
-  counts[x] = counts[x] + 1
-end
-puts counts
-
-# 3.
-counts = {}
-numbers.each do |x|
-  counts[x] = counts[x] || 0
-  # ^ guard clause
-
-  counts[x] = counts[x] + 1
-end
-puts counts
-
-# 4.
-counts = {}
-numbers.each do |x|
-  counts[x] ||= 0
-  counts[x]  += 1
-end
-puts counts
-
-# 5.
-counts = Hash.new(0)
-numbers.each do |x|
-  counts[x] += 1
-end
-puts counts
+puts revenues_per_planet
