@@ -6,6 +6,10 @@ class TodoTron
   end
 
   def add_item(description)
-    @items.push description
+    new_item = Todo.new description
+    @items.push new_item
+  end
+
+  def mark_complete(description)
   end
 end
