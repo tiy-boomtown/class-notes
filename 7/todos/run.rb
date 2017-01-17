@@ -13,11 +13,19 @@ loop do
   input = gets.chomp
 
   if input == '1'
-    m.list_todos
+    m.items.each do |item|
+      puts "* #{item.description}"
+    end
+    # puts m.items
+
   elsif input == '2'
-    # m.add_todo ...
+    print 'New item > '
+    description = gets.chomp
+    m.add_item description
+
   elsif input == '3'
-    # m.complete_todo
+    m.mark_complete
+
   else
     puts "Unrecognized input: #{input}. Try again"
   end
