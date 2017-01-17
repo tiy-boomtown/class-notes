@@ -1,3 +1,5 @@
+require 'csv'
+
 require_relative 'todo'
 
 class TodoTron
@@ -27,5 +29,15 @@ class TodoTron
     end
     puts "WARNING: no item matched #{description}"
     return nil
+  end
+
+  def export_csv(path)
+    CSV.open(path, 'w') do |csv|
+      csv << ['Item Name', 'Done']
+
+      @items.each do |item|
+        csv << [item.description, item.done?]
+      end
+    end
   end
 end

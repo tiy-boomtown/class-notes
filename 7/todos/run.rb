@@ -1,6 +1,10 @@
 require_relative 'todotron'
 
-m = TodoTron.new
+m = if File.exists? 'database.csv'
+  TodoTron.load_csv 'database.csv'
+else
+  TodoTron.new
+end
 
 puts 'Welcome to TodoTron'
 loop do
@@ -8,6 +12,7 @@ loop do
   puts '1. List todos'
   puts '2. Add todo'
   puts '3. Complete todo'
+  puts '4. Export to CSV'
 
   print '> '
   input = gets.chomp
@@ -27,6 +32,18 @@ loop do
     print 'Which item > '
     description = gets.chomp
     m.mark_complete description
+
+  elsif input == '4'
+    print 'Export to what file (default: out.csv) > '
+    path = gets.chomp
+    if path == ''
+      path = 'out.csv'
+    end
+    m.export_csv path
+
+  elsif input == 'quit'
+    m.export_csv 'database.csv'
+    exit
 
   else
     puts "Unrecognized input: #{input}. Try again"
