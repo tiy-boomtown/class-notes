@@ -25,6 +25,7 @@ class TodoTron
         return item
       end
     end
+    puts "WARNING: no item matched #{description}"
     return nil
   end
 end

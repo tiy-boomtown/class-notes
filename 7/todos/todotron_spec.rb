@@ -1,4 +1,5 @@
 require 'rspec'
+
 require_relative 'todo'
 require_relative 'todotron'
 
@@ -36,5 +37,13 @@ describe TodoTron do
 
     # expect(tron.items).to include i
     expect(i.class).to eq Todo
+  end
+
+  it 'can fail to find items' do
+    tron = TodoTron.new
+
+    result = tron.find_item 'Not a thing'
+
+    expect(result).to eq nil
   end
 end
