@@ -11,5 +11,10 @@ class TodoTron
   end
 
   def mark_complete(description)
+    @items.each do |item|
+      if item.description == description
+        item.done!
+      end
+    end
   end
 end
