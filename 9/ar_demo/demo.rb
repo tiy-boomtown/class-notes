@@ -41,4 +41,8 @@ end
 
 puts "Question"
 
-puts "Answer: #{Actor.count}"
+Actor.all.each do |actor|
+  puts actor.name + ": #{actor.salary}"
+end
+
+puts Actor.all.inspect
